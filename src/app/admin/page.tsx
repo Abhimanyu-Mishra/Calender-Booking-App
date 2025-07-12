@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import RoomSelector from '@/components/RoomSelector';
+import Link from 'next/link';
 
 interface Booking {
   _id: string;
@@ -61,12 +62,19 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-100 py-8 px-2">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-100 py-8 px-2 relative">
+      {/* Go to Booking Page Button */}
+      <div className="absolute top-6 right-6 z-10">
+        <Link href="/" legacyBehavior>
+          <a className="font-bold text-white bg-blue-600 shadow-md rounded-lg px-5 py-2 transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base sm:text-lg">
+            Go to Booking Page
+          </a>
+        </Link>
+      </div>
       <main className="w-full max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-10">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-blue-800 mb-6 tracking-tight">Admin: Manage Bookings</h1>
           <section className="mb-8">
-            {/* <h2 className="text-xl font-bold text-gray-800 mb-4">Filters</h2> */}
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <div className="w-full sm:w-auto">
                 <label className="block mb-1 text-base font-semibold text-gray-700">Select Date</label>

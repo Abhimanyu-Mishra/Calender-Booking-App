@@ -4,11 +4,11 @@ import Booking from '@/models/Booking';
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await dbConnect();
   try {
-    const { id } = params;
+    const { id } = await params;
     const booking = await Booking.findByIdAndDelete(id);
     if (!booking) {
       return NextResponse.json({ error: 'Booking not found.' }, { status: 404 });
